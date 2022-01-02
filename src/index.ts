@@ -37,8 +37,6 @@ class Block {
   }
 }
 
-Block.calculateBlockHash(1, '', 100, 'Hello');
-
 const genesisBlock: Block = new Block(0, '20202020202', '', 'Hi', 123456);
 
 let blockchain: Block[] = [genesisBlock];
@@ -71,10 +69,9 @@ const createNewBlock = (data: string): Block => {
     newTimestamp
   );
 
+  addBlock(newBlock);
   return newBlock;
 };
-
-// console.log(createNewBlock('Hello'), createNewBlock('Bye'));
 
 const getHashForBlock = (aBlock: Block): string =>
   Block.calculateBlockHash(
@@ -101,5 +98,11 @@ const addBlock = (candidateBlock: Block): void => {
     blockchain.push(candidateBlock);
   }
 };
+
+createNewBlock('second block');
+createNewBlock('third block');
+createNewBlock('fourth block');
+
+console.log(blockchain);
 
 export {};
